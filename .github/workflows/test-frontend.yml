@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           cache: "npm"
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: package-lock.json
       # NOTE: you cannot use secrets.GITHUB_TOKEN to access private GitHub Packages
       # within the same organisation but in a different repository.
       # quoted from https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
@@ -33,7 +33,7 @@ jobs:
         with:
           node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           cache: "npm"
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npx tsc
 
@@ -47,6 +47,6 @@ jobs:
         with:
           node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           cache: "npm"
-          cache-dependency-path: frontend/package-lock.json
+          cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npx next lint
