@@ -34,7 +34,10 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # prefer to use a full fetch for licensed workflows
+          fetch-depth: 0 # prefer to use a full fetch for licensed workflow
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0.0
       - uses: jonabc/setup-licensed@v1
         with:
           version: "2.x" # required: supports matching based on string equivalence or node-semver range
