@@ -44,4 +44,4 @@ jobs:
         uses: jonabc/licensed-ci@v1
         with:
           github_token: ${{ secrets.TOKEN }}
-          command: bundle exec /usr/local/bin/licensed
+          command: bundle exec licensed
