@@ -23,7 +23,6 @@ jobs:
       # script could steal NODE_AUTH_TOKEN.
       # quoted from https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
       - run: npm ci --ignore-scripts
-      - run: licensed list
 
   check_licensed:
     name: License Check
@@ -36,7 +35,7 @@ jobs:
       - uses: jonabc/setup-licensed@v1
         with:
           version: "2.x" # required: supports matching based on string equivalence or node-semver range
-          install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
+          # install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
           # github_token:# optional: allows users to make authenticated requests to GitHub's APIs
       - run: npm ci # install dependencies in local environment
       - run: licensed list
