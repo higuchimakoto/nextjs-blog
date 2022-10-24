@@ -40,7 +40,7 @@ jobs:
           ruby-version: 3.0.0
       - uses: jonabc/setup-licensed@v1
         with:
-          version: "2.x" # required: supports matching based on string equivalence or node-semver range
+          version: 3 # required: supports matching based on string equivalence or node-semver range
           github_token: ${{ secrets.TOKEN }}
       - run: npm ci # install dependencies in local environment
       - run: licensed list
