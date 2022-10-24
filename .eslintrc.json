@@ -1,0 +1,20 @@
+{
+           "extends": "next/core-web-vitals",
+           "overrides": [
+                      {
+                                 "files": [
+                                            "*.stories.@(ts|tsx|js|jsx|mjs|cjs)"
+                                 ],
+                                 "extends": [
+                                            "plugin:storybook/recommended",
+                                            "prettier"
+                                 ],
+                                 "rules": {
+                                            "storybook/prefer-pascal-case": "off"
+                                 }
+                      }
+           ],
+           "rules": {
+                      "@next/next/no-img-element": "off"
+           }
+}

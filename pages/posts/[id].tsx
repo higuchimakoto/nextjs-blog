@@ -8,7 +8,7 @@ import utilStyles from '../../styles/utils.module.css'
 import { GetStaticProps, GetStaticPaths, GetServerSideProps } from 'next'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-    const paths = getAllPostIds()
+    const paths = await getAllPostIds()
     return {
         paths,
         fallback: false,
