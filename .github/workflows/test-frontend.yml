@@ -1,6 +1,9 @@
 name: Test frontend
 
 on:
+  push:
+    branches:
+      - main
   pull_request:
     types: [opened, synchronize]
 
@@ -35,8 +38,7 @@ jobs:
       - uses: jonabc/setup-licensed@v1
         with:
           version: "2.x" # required: supports matching based on string equivalence or node-semver range
-          # install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
-          # github_token:# optional: allows users to make authenticated requests to GitHub's APIs
+          github_token: ${{ secrets.TOKEN }}
       - run: npm ci # install dependencies in local environment
       - run: licensed list
 
