@@ -1,0 +1,10 @@
+cache_path: "./cache"
+
+sources:
+  npm: true
+
+allowed:
+  - mit
+  - apache-2.0
+  - isc
+  - bsd-3-clause

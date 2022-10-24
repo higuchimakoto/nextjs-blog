@@ -33,7 +33,7 @@ jobs:
       - uses: actions/setup-node@v3 # https://github.com/actions/setup-node
         with:
           node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-          cache: "npm"
+          cache: npm
           cache-dependency-path: package-lock.json
       - uses: jonabc/setup-licensed@v1
         with:
@@ -42,3 +42,4 @@ jobs:
       - uses: jonabc/licensed-ci@v1
         with:
           github_token: ${{ secrets.TOKEN }}
+      - run: bundle exec licensed cache
