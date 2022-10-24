@@ -34,12 +34,14 @@ jobs:
         with:
           node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           cache: "npm"
+
+      - run: npm install --production --ignore-scripts
       - uses: jonabc/setup-licensed@v1
         with:
           version: 3.x
-      - run: npm install --production --ignore-scripts
+
       - id: licensed
-      - uses: jonabc/licensed-ci@v1
+        uses: jonabc/licensed-ci@v1
         with:
           github_token: ${{ secrets.TOKEN }}
           command: bundle exec /usr/local/bin/licensed
