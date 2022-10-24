@@ -39,7 +39,7 @@ jobs:
       - run: npm ci # Install project dependencies here.
       - uses: jonabc/licensed-ci@v1
         with:
-          github_token: ${{ secrets.TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
   type_check:
     name: Type Check
@@ -54,17 +54,3 @@ jobs:
           cache-dependency-path: package-lock.json
       - run: npm ci
       - run: npx tsc
-
-  lint:
-    name: Lint
-    runs-on: ubuntu-latest
-    needs: [install_dependencies]
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3 # https://github.com/actions/setup-node
-        with:
-          node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-          cache: "npm"
-          cache-dependency-path: package-lock.json
-      - run: npm ci
-      - run: npx next lint
