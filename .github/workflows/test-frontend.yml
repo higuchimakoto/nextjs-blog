@@ -34,13 +34,11 @@ jobs:
         with:
           node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           cache: "npm"
-
-      - run: npm install --production --ignore-scripts
+          cache-dependency-path: package-lock.json
       - uses: jonabc/setup-licensed@v1
         with:
           version: 3.x
-
-      - id: licensed
-        uses: jonabc/licensed-ci@v1
+      - run: npm ci
+      - uses: jonabc/licensed-ci@v1
         with:
           github_token: ${{ secrets.TOKEN }}
