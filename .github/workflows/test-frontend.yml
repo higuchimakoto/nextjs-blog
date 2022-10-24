@@ -42,4 +42,5 @@ jobs:
       - uses: jonabc/licensed-ci@v1
         with:
           github_token: ${{ secrets.TOKEN }}
+          command: bundle exec licensed
       - run: bundle exec licensed cache
