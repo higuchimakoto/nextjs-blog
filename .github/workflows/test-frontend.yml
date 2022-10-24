@@ -14,6 +14,8 @@ jobs:
           node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           cache: "npm"
           cache-dependency-path: package-lock.json
+          fetch-depth: 0
+
       # NOTE: you cannot use secrets.GITHUB_TOKEN to access private GitHub Packages
       # within the same organisation but in a different repository.
       # quoted from https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
@@ -21,6 +23,23 @@ jobs:
       # script could steal NODE_AUTH_TOKEN.
       # quoted from https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
       - run: npm ci --ignore-scripts
+      - run: licensed list
+
+  check_licensed:
+    name: License Check
+    needs: [install_dependencies]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # prefer to use a full fetch for licensed workflows
+      - uses: jonabc/setup-licensed@v1
+        with:
+          version: "2.x" # required: supports matching based on string equivalence or node-semver range
+          install-dir: /path/to/install/at # optional: defaults to /usr/local/bin
+          # github_token:# optional: allows users to make authenticated requests to GitHub's APIs
+      - run: npm ci # install dependencies in local environment
+      - run: licensed list
 
   type_check:
     name: Type Check
