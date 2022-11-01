@@ -16,7 +16,7 @@ jobs:
         with:
           node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
           cache: "npm"
-          cache-dependency-path: package-lock.json
+          cache-dependency-path: ./package-lock.json
       # NOTE: you cannot use secrets.GITHUB_TOKEN to access private GitHub Packages
       # within the same organisation but in a different repository.
       # quoted from https://github.com/actions/setup-node/blob/main/docs/advanced-usage.md#use-private-packages
@@ -30,11 +30,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3 # https://github.com/actions/setup-node
-        with:
-          node-version: 16 # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-          cache: "npm"
-          cache-dependency-path: package-lock.json
       - uses: jonabc/setup-licensed@v1
         with:
           version: 3.x
